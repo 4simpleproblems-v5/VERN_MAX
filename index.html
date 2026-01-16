@@ -11,17 +11,17 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
     <!-- Aggressive Preloading -->
-    <link rel="preload" href="/VERN/uv/uv.bundle.js" as="script">
-    <link rel="preload" href="/VERN/baremux/index.js" as="script">
-    <link rel="preload" href="/VERN/baremux/worker.js" as="worker">
-    <link rel="preload" href="/VERN/uv/sw.js" as="worker">
+    <link rel="preload" href="/uv/uv.bundle.js" as="script">
+    <link rel="preload" href="/baremux/index.js" as="script">
+    <link rel="preload" href="/baremux/worker.js" as="worker">
+    <link rel="preload" href="/uv/sw.js" as="worker">
 
     <!-- Sync Loading for Critical Proxy Scripts -->
     <script src="uv/uv.bundle.js"></script>
-    <script src="../navigation.js"></script>
+    <script src="navigation.js"></script>
     <!-- Inline Config for Speed -->
     <script>
-        const basePath = "/VERN/uv/";
+        const basePath = "/uv/";
         self.__uv$config = {
             prefix: basePath + "service/",
             encodeUrl: Ultraviolet.codec.xor.encode,
@@ -391,9 +391,9 @@
 
             // Init BareMux
             try {
-                const connection = new BareMux.BareMuxConnection("/VERN/baremux/worker.js");
+                const connection = new BareMux.BareMuxConnection("/baremux/worker.js");
                 const wispUrl = "wss://wisp.rhw.one/";
-                connection.setTransport("/VERN/libcurl/index.mjs", [{ websocket: wispUrl }]);
+                connection.setTransport("/libcurl/index.mjs", [{ websocket: wispUrl }]);
             } catch (e) {
                 console.error("BareMux Init Failed", e);
             }
